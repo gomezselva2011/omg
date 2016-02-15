@@ -12,27 +12,32 @@ opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
 def main():
+    
+    page = 'http://www.laprensa.com.ni/feed'
+    page1 = 'http://www.elnuevodiario.com.ni/rss/'
+    crawl(page)
+    crawl(page1)
+    
+    
+def crawl(page):
+    
     try:
-        page = 'http://www.laprensa.com.ni/feed'
-        page1 = 'http://www.elnuevodiario.com.ni/rss/'
         sourceCode = opener.open(page).read()
-        sourceCode1 = opener.open(page1).read()
+        print ('----------------------------------------')
+        titles= re.findall(r'<title>(.*?)</title>', sourceCode)
+        for title in titles:
+            print title
+            
         
-        try:
-            print ('----------------------------------------')
-            titles= re.findall(r'<title>(.*?)</title>', sourceCode)
-            for title in titles:
-                print title
-            print ('----------------------------------------')
-            titles1= re.findall(r'<title>(.*?)</title>', sourceCode1)
-            for title1 in titles1:
-                print title1
                 
-        except Exception, e:
-            print str(e)
-        
     except Exception, e:
         print str(e)
+    
+    
+    
+    
+    
+    
 
 if __name__ == "__main__":
     main()
