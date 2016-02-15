@@ -17,7 +17,7 @@ def main():
         page1 = 'http://www.elnuevodiario.com.ni/rss/'
         sourceCode = opener.open(page).read()
         sourceCode1 = opener.open(page1).read()
-        #print sourceCode
+        
         try:
             print ('----------------------------------------')
             titles= re.findall(r'<title>(.*?)</title>', sourceCode)
