@@ -34,5 +34,5 @@ def main():
     except Exception, e:
         print str(e)
 
-
-main()
+if __name__ == "__main__":
+    main()
